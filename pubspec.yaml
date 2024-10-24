@@ -1,4 +1,4 @@
-name: json_serializable.dart  # Can be anything
+name: json_serializable  # Can be anything
 environment:
   sdk: ^3.5.0
 
