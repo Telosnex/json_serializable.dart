@@ -63,6 +63,11 @@ String _cast(String expression, DartType targetType) {
     return defaultDecodeValue;
   }
 
+  if (targetType.isDartCoreString) {
+    final wrappedForWeb =
+        '$expression.runtimeType.toString() == \'JSStringImpl\' ? \'\${$expression}\' : $expression as String';
+    return wrappedForWeb;
+  }
   final typeCode = typeToCode(targetType);
   return '$expression as $typeCode';
 }
