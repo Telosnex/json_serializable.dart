@@ -251,8 +251,11 @@ String? defaultDecodeLogic(
     final question = targetTypeNullable ? '?' : '';
     return '($expression as num$question)$question.toInt()';
   } else if (simpleJsonTypeChecker.isAssignableFromType(targetType)) {
+    if (targetType.isDartCoreString) {
+      return '$expression.runtimeType.toString() == \'JSStringImpl\' ? \'\${$expression}\' : $expression as String';
+    }
     final typeCode = typeToCode(targetType, forceNullable: defaultProvided);
-    return '$expression asD $typeCode';
+    return '$expression as $typeCode';
   }
 
   return null;
