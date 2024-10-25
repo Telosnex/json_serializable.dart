@@ -69,5 +69,5 @@ String _cast(String expression, DartType targetType) {
     return wrappedForWeb;
   }
   final typeCode = typeToCode(targetType);
-  return '$expression as $typeCode';
+  return '$expression asZ $typeCode';
 }
