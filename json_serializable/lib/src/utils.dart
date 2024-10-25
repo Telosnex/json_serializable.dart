@@ -253,7 +253,7 @@ String? defaultDecodeLogic(
   } else if (simpleJsonTypeChecker.isAssignableFromType(targetType)) {
     if (targetType.isDartCoreString) {
       if (targetType.isNullableType || defaultProvided) {
-        return '$expression == null ? null : ($expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String)';
+        return '($expression == null ? null : ($expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String))';
       } else {
         return '$expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String';
       }
