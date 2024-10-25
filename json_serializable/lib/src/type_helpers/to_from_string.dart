@@ -75,19 +75,14 @@ class ToFromStringHelper {
     }
 
     final String parseParam;
-    if (type.isDartCoreString) {
-      if (nullable) {
-        parseParam =
-            '$expression == null ? null : ($expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String)';
-      } else {
-        parseParam =
-            '$expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String';
-      }
-    } else {
-      // Fallback to unpatched behavior.
-      parseParam = '$expression as String';
-    }
 
+    if (nullable) {
+      parseParam =
+          '$expression == null ? null : ($expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String)';
+    } else {
+      parseParam =
+          '$expression.runtimeType.toString() == \'JSStringImpl\' ? String.fromCharCodes(($expression as String).codeUnits) : $expression as String';
+    }
     final output = '$_parse($parseParam)';
 
     return DefaultContainer(
