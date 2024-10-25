@@ -68,6 +68,7 @@ String _cast(String expression, DartType targetType) {
         '$expression.runtimeType.toString() == \'JSStringImpl\' ? \'\${$expression}\' : $expression as String';
     return wrappedForWeb;
   }
+  print('typecode: ${typeToCode(targetType)}');
   final typeCode = typeToCode(targetType);
   return '$expression asZ $typeCode';
 }
