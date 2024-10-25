@@ -115,7 +115,8 @@ class MapHelper extends TypeHelper<TypeHelperContextWithConfig> {
       keyUsage = context.deserialize(keyArg, _keyParam).toString();
     } else if (context.config.anyMap &&
         !(keyArg.isDartCoreObject || keyArg is DynamicType)) {
-      keyUsage = '$_keyParam.runtimeType.toString() == \'JSStringImpl\' ? \'$_keyParam\' : $_keyParam as String';
+      keyUsage =
+          '$_keyParam.runtimeType.toString() == \'JSStringImpl\' ? \'\${$_keyParam}\' : $_keyParam as String';
     } else if (context.config.anyMap &&
         keyArg.isDartCoreObject &&
         !keyArg.isNullableType) {

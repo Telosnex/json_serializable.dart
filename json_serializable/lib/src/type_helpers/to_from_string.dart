@@ -74,8 +74,10 @@ class ToFromStringHelper {
       return null;
     }
 
-    final parseParam = isString ? expression : '$expression.runtimeType.toString() == \'JSStringImpl\' ? \'$expression\' : $expression as String';
-;
+    final parseParam = isString
+        ? expression
+        : '$expression.runtimeType.toString() == \'JSStringImpl\' ? \'\${$expression}\' : $expression as String';
+    ;
 
     final output = '$_parse($parseParam)';
 
